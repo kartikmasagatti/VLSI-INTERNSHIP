@@ -1,0 +1,26 @@
+name: RTL Verification
+on:
+  push:
+  pull_request:
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+      - name: Compile and simulate
+        run: |
+          mkdir -p build
+          iverilog -g2012 -Wall -o build/task1_sim rtl/counter_register.v tb/tb_counter_register.v
+          vvp build/task1_sim | tee build/simulation.log
+      - name: Upload simulation log and VCD
+        uses: actions/upload-artifact@v4
+        with:
+          name: rtl-simulation-evidence
+          path: |
+            build/simulation.log
+            task2_counter_register.vcd

@@ -1,0 +1,11 @@
+{
+  "DESIGN_NAME": "parameterized_counter",
+  "VERILOG_FILES": [
+    "dir::../../level2/task1_parameterized_rtl/rtl/parameterized_counter.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 20,
+  "FP_CORE_UTIL": 30,
+  "PL_TARGET_DENSITY": 0.35,
+  "DESIGN_IS_CORE": true
+}

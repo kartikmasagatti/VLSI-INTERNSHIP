@@ -1,0 +1,8 @@
+read_verilog rtl/alu4.v
+hierarchy -check -top alu4
+proc
+opt
+check
+synth -top alu4
+stat
+write_verilog -noattr build/alu4_netlist.v
